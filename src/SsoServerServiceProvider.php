@@ -32,7 +32,7 @@ class SsoServerServiceProvider extends ServiceProvider
             throw new SsoAuthenticationException("SSO server model not specified");
         }
         if (!empty($config_server)) {
-            $this->app->singletone('SsoServer', function () use ($config_server) {
+            $this->app->singleton('SsoServer', function () use ($config_server) {
                 $model = app()->make($config_server['model']);
                 return new SsoServer($config_server, $model);
             });
